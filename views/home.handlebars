@@ -1,0 +1,23 @@
+{{#each articles}}
+
+<div id="wrapper">
+    <h1>Note Scraper</h1>
+    <h2><i>Scraped Articles</i></h2>
+
+    <div id="articles">
+        {{this.articles}}
+    </div>
+
+    <div id="summary">
+        {{this.summary}}
+    </div>
+    
+    <div id="notes">
+        {{this.notes}}
+    </div>
+</div>
+
+{{/each}}
+
+{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
+{{!-- <script src="/public/assets/js/app.js"></script> --}}
