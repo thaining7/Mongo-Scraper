@@ -24,8 +24,8 @@ app.set("view engine", "handlebars");
 app.use(apiRoutes);
 app.use(hbRoutes);
 
-// mongoose.connect("mongodb://localhost/mongoScraper", { useNewUrlParser: true });
-mongoose.connect(MONGODB_URI);
+mongoose.connect("mongodb://localhost/mongoScraper", { useNewUrlParser: true });
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 app.listen(PORT, function () {
     console.log("App running on port " + PORT + "!");
