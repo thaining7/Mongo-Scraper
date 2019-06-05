@@ -91,7 +91,7 @@ $(document).on("click", ".delete-saved", function () {
 
 // Whenever someone clicks an a tag
 
-$(document).on("click", ".save-note", function () {
+$(document).on("click", ".article-notes", function () {
     // Empty the notes from the note section
     $("#notes").empty();
     // Save the id from the p tag
@@ -112,7 +112,7 @@ $(document).on("click", ".save-note", function () {
             // A textarea to add a new note body
             $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
             // A button to submit a new note, with the id of the article saved to it
-            $("#notes").append("<button class='btn btn-success' data-id='" + data._id + "' id='savenote'>Save Note</button>");
+            $("#notes").append("<button class='btn btn-success' data-id='" + data._id + "' id='save-note'>Save Note</button>");
 
             // If there's a note in the article
             if (data.note) {
@@ -125,7 +125,7 @@ $(document).on("click", ".save-note", function () {
 });
 
 // When you click the savenote button
-$(document).on("click", "#savenote", function () {
+$(document).on("click", "#save-note", function () {
     // Grab the id associated with the article from the submit button
     var thisId = $(this).attr("data-id");
 

@@ -22,7 +22,7 @@ router.get("/scrape", function (req, res) {
             result.title = $(this)
                 .children("a")
                 .text();
-            result.link = $(this)
+            result.link = "https://www.phoronix.com/scan.php" + $(this)
                 .children("a")
                 .attr("href");
             result.summary = $(this)

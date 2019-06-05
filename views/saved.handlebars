@@ -54,8 +54,8 @@
                         {{#each articles}}
 
                         <div id="articles">
-                            {{this.title}}
-                            {{this.link}}
+
+                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
 
                         </div>
 
@@ -71,7 +71,7 @@
 
                         <button class="delete-saved btn btn-danger" data-id="{{this.id}}">Delete from saved</button>
 
-                        <button class="save-note btn btn-success" data-id="{{this.id}}">Save a note</button>
+                        <button class="article-notes btn btn-success" data-id="{{this.id}}">Article Notes</button>
 
                         {{/if}}
 

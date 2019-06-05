@@ -56,8 +56,8 @@
                         {{#each articles}}
 
                         <div id="articles">
-                            {{this.title}}
-                            {{this.link}}
+
+                            <a href="{{this.link}}" target="_blank">{{this.title}}</a>
 
                         </div>
 
@@ -65,7 +65,7 @@
                             {{this.summary}}
                         </div>
 
-                        
+
 
                         <button class="change-saved btn btn-success" data-id="{{id}}" data-newsaved="{{saved}}">
                             Save Article
