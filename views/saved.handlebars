@@ -1,25 +1,87 @@
-{{#each articles}}
+<div class="container">
 
-<div id="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">Mongo Scraper</a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <h1>Note Scraper</h1>
-    <h2><i>Saved Articles</i></h2>
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/saved">Saved Articles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-danger scrape-new">Scrape New Articles</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-danger clear">Clear Articles</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    <div id="articles">
-        {{this.articles}}
+    <div id="wrapper">
+
+        <div class="row" style="text-align-center">
+
+            <div class="col-md-12">
+
+                <div class="jumbotron text-center">
+                    <h1 class="display-4">Mongo Scraper</h1>
+                    <h2><i>Phoronix Edition</i></h2>
+
+                </div>
+
+                {{!-- <h1>Mongo Scraper</h1>
+                <h2><i>Scraped Articles</i></h2> --}}
+
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        {{#each articles}}
+
+                        <div id="articles">
+                            {{this.title}}
+                            {{this.link}}
+
+                        </div>
+
+                        <div id="summary">
+                            {{this.summary}}
+                        </div>
+
+                        <div id="notes">
+                            {{this.notes}}
+                        </div>
+
+                        {{#if saved}}
+
+                        <button class="delete-saved btn btn-danger" data-id="{{this.id}}">Delete from saved</button>
+
+                        <button class="save-note btn btn-success" data-id="{{this.id}}">Save a note</button>
+
+                        {{/if}}
+
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div id="summary">
-        {{this.summary}}
-    </div>
-    
-    <div id="notes">
-        {{this.notes}}
-    </div>
-
 </div>
-
-{{/each}}
 
 {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
 {{!-- <script src="/public/assets/js/saved.js"></script> --}}

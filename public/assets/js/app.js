@@ -1,39 +1,97 @@
-$.getJSON("/articles", function (data) {
-    // For each one
-    // console.log(data);
-    for (var i = 0; i < data.length; i++) {
-        if (data[i].summary != undefined) {
-            console.log(data[i].summary);
-            // Display the apropos information on the page
-            $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>" + "<a class='btn btn-success save' id='#save-article'> Save Article </a>");
-        }
+// $.getJSON("/", function (data) {
+//     // For each one
+//     // console.log(data);
+//     for (var i = 0; i < data.length; i++) {
+//         if (data[i].summary != undefined) {
+//             console.log(data[i].summary);
+//             // Display the apropos information on the page
+//             $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "<br />" + data[i].summary + "</p>");
+//         }
 
-    }
-});
+//     }
+// });
 
-// When save button is clicked
+// When the scrape article button is clicked
 
-$(document).on("click", "#save-article", function () {
-    // Grab the id associated with the article from the save button
-    var thisId = $(this).attr("data-id");
-    
-    $.ajax({
-        method: "PUT",
-        url: "/saved/" + thisId,
-        
-    })
-        // With that done
-        .then(function (data) {
-            // Log the response
+$(document).on("click", ".scrape-new", function () {
+
+    // Send the GET request.
+    $.get("/scrape/").then(
+        function (data) {
             console.log(data);
-
-        });
-
+            
+            // Reload the page to get the updated list
+            location.reload();
+        }
+    );
 });
 
+//When the clear article button is clicked
 
-// Whenever someone clicks a p tag
-$(document).on("click", "p", function () {
+$(document).on("click", ".clear", function () {
+
+    // Send the GET request.
+    $.get("/articles/").then(
+        function (data) {
+            console.log(data);
+            
+            // Reload the page to get the updated list
+            location.reload();
+        }
+    );
+});
+
+//When the save article button is clicked
+
+$(document).on("click", ".change-saved", function () {
+    var thisId = $(this).attr("data-id");
+    var newSaved = $(this).data("newsaved");
+
+    var newSavedState = {
+        saved: newSaved
+    };
+
+    // Send the PUT request.
+    $.ajax("/saved/" + thisId, {
+        type: "PUT",
+        data: newSavedState
+    }).then(
+        function (data) {
+            console.log(data);
+            console.log("changed article to", newSaved);
+            // Reload the page to get the updated list
+            location.reload();
+        }
+    );
+});
+
+//When the delete from saved button is clicked
+
+$(document).on("click", ".delete-saved", function () {
+    var thisId = $(this).attr("data-id");
+    var newSaved = $(this).data("newsaved");
+
+    var newSavedState = {
+        saved: newSaved
+    };
+
+    // Send the PUT request.
+    $.ajax("/unsave/" + thisId, {
+        type: "PUT",
+        data: newSavedState
+    }).then(
+        function (data) {
+            console.log(data);
+            console.log("changed article to", newSaved);
+            // Reload the page to get the updated list
+            location.reload();
+        }
+    );
+});
+
+// Whenever someone clicks an a tag
+
+$(document).on("click", ".save-note", function () {
     // Empty the notes from the note section
     $("#notes").empty();
     // Save the id from the p tag
@@ -54,7 +112,7 @@ $(document).on("click", "p", function () {
             // A textarea to add a new note body
             $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
             // A button to submit a new note, with the id of the article saved to it
-            $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
+            $("#notes").append("<button class='btn btn-success' data-id='" + data._id + "' id='savenote'>Save Note</button>");
 
             // If there's a note in the article
             if (data.note) {

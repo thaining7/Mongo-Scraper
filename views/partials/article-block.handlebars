@@ -1,0 +1,19 @@
+<li>
+
+	{{article}}
+
+    {{#unless saved}}
+
+	<button class="change-saved btn btn-success" data-id="{{id}}" data-newsaved="{{saved}}">
+		Save Article
+	</button>
+
+    {{/unless}}
+
+    {{#if saved}}
+
+	<button class="delete-saved btn btn-danger" data-id="{{this.id}}">Delete from saved</button>
+
+    {{/if}}
+
+</li>

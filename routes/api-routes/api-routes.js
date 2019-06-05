@@ -47,7 +47,23 @@ router.get("/scrape", function (req, res) {
 });
 
 // Route for getting all Articles from the db
+
 router.get("/articles", function (req, res) {
+    // Grab every document in the Articles collection
+    db.Article.deleteMany({})
+        .then(function (dbArticle) {
+            // If we were able to successfully find Articles, send them back to the client
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
+});
+
+// Route for clearing articles
+
+router.delete("/articles", function (req, res) {
     // Grab every document in the Articles collection
     db.Article.find({})
         .then(function (dbArticle) {
@@ -79,21 +95,41 @@ router.put("/saved/:id", function (req, res) {
         });
 });
 
-// route for getting saved Articles
+// route for unsaving articles
 
-router.get("/saved", function (req, res) {
-    db.Article.find({ saved: true })
-    .then(function (dbArticle) {
-        // If we were able to successfully find Articles, send them back to the client
-        res.json(dbArticle);
-    })
-    .catch(function (err) {
-        // If an error occurred, send it to the client
-        res.json(err);
-    });
+router.put("/unsave/:id", function (req, res) {
+    console.log("Reached unsave article route!");
+    // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+    db.Article.findOneAndUpdate({ _id: req.params.id }, { $set: { saved: false }})
+
+        .then(function (dbArticle) {
+
+
+            // If we were able to successfully find an Article with the given id, send it back to the client
+            res.json(dbArticle);
+        })
+        .catch(function (err) {
+            // If an error occurred, send it to the client
+            res.json(err);
+        });
 });
 
+// route for getting saved Articles
+
+// router.get("/saved", function (req, res) {
+//     db.Article.find({ saved: true })
+//     .then(function (dbArticle) {
+//         // If we were able to successfully find Articles, send them back to the client
+//         res.json(dbArticle);
+//     })
+//     .catch(function (err) {
+//         // If an error occurred, send it to the client
+//         res.json(err);
+//     });
+// });
+
 // Route for grabbing a specific Article by id, populate it with it's note
+
 router.get("/articles/:id", function (req, res) {
     // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
     db.Article.findOne({ _id: req.params.id })
@@ -110,6 +146,7 @@ router.get("/articles/:id", function (req, res) {
 });
 
 // Route for saving/updating an Article's associated Note
+
 router.post("/articles/:id", function (req, res) {
     // Create a new note and pass the req.body to the entry
     db.Note.create(req.body)
