@@ -8,7 +8,7 @@ var apiRoutes = require("./routes/api-routes/api-routes");
 var hbRoutes = require("./routes/index");
 
 var PORT = 3000;
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoScraper";
 
 var app = express();
 
@@ -24,7 +24,7 @@ app.set("view engine", "handlebars");
 app.use(apiRoutes);
 app.use(hbRoutes);
 
-mongoose.connect("mongodb://localhost/mongoScraper", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/mongoScraper", { useNewUrlParser: true });
 mongoose.connect(MONGODB_URI);
 
 app.listen(PORT, function () {
