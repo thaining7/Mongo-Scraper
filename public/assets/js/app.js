@@ -19,7 +19,7 @@ $(document).on("click", ".scrape-new", function () {
     $.get("/scrape/").then(
         function (data) {
             console.log(data);
-            
+
             // Reload the page to get the updated list
             location.reload();
         }
@@ -34,7 +34,7 @@ $(document).on("click", ".clear", function () {
     $.get("/articles/").then(
         function (data) {
             console.log(data);
-            
+
             // Reload the page to get the updated list
             location.reload();
         }
@@ -93,7 +93,7 @@ $(document).on("click", ".delete-saved", function () {
 
 $(document).on("click", ".article-notes", function () {
     // Empty the notes from the note section
-    $("#notes").empty();
+    $("#notesModal").empty();
     // Save the id from the p tag
     var thisId = $(this).attr("data-id");
 
@@ -106,6 +106,7 @@ $(document).on("click", ".article-notes", function () {
         .then(function (data) {
             console.log(data);
             // The title of the article
+
             $("#notes").append("<h2>" + data.title + "</h2>");
             // An input to enter a new title
             $("#notes").append("<input id='titleinput' name='title' >");
@@ -113,6 +114,8 @@ $(document).on("click", ".article-notes", function () {
             $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
             // A button to submit a new note, with the id of the article saved to it
             $("#notes").append("<button class='btn btn-success' data-id='" + data._id + "' id='save-note'>Save Note</button>");
+
+            // $("#notesModal").modal("toggle");
 
             // If there's a note in the article
             if (data.note) {
