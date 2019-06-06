@@ -1,5 +1,3 @@
-// var express = require("express");
-
 var db = require("../../models");
 var axios = require("axios");
 var cheerio = require("cheerio");
@@ -84,7 +82,6 @@ router.put("/saved/:id", function (req, res) {
     db.Article.findOneAndUpdate({ _id: req.params.id }, { $set: { saved: true }}, { new: true })
 
         .then(function (dbArticle) {
-
 
             // If we were able to successfully find an Article with the given id, send it back to the client
             res.json(dbArticle);
