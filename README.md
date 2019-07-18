@@ -6,6 +6,7 @@
 
 #### Technologies used include:
 
+* jQuery
 * Express
 * Handlebars
 * Mongoose
