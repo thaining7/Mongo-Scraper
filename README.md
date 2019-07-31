@@ -8,7 +8,7 @@
 
 #### This application demonstrates CRUD database operations using MongoDB as a database
 
-#### Tech Used:
+# Tech Used:
 
 * jQuery
 * Express
