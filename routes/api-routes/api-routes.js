@@ -3,8 +3,6 @@ var axios = require("axios");
 var cheerio = require("cheerio");
 var router = require("express").Router();
 
-// module.exports = function(app) {
-
 router.get("/scrape", function (req, res) {
     // First, we grab the body of the html with axios
     axios.get("https://www.phoronix.com/scan.php?page=home").then(function (response) {
@@ -111,20 +109,6 @@ router.put("/unsave/:id", function (req, res) {
         });
 });
 
-// route for getting saved Articles
-
-// router.get("/saved", function (req, res) {
-//     db.Article.find({ saved: true })
-//     .then(function (dbArticle) {
-//         // If we were able to successfully find Articles, send them back to the client
-//         res.json(dbArticle);
-//     })
-//     .catch(function (err) {
-//         // If an error occurred, send it to the client
-//         res.json(err);
-//     });
-// });
-
 // Route for grabbing a specific Article by id, populate it with it's note
 
 router.get("/articles/:id", function (req, res) {
@@ -162,7 +146,5 @@ router.post("/articles/:id", function (req, res) {
             res.json(err);
         });
 });
-
-// }
 
 module.exports = router;

@@ -60,11 +60,37 @@
                             {{this.summary}}
                         </div>
 
-                        <div id="notes">
-                            
-                        </div>
+
 
                         {{#if saved}}
+
+                        {{!-- <div class=".modal-container"> --}}
+
+                            <div class="bootbox modal fade show" id="notesModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-body"><button type="button" class="bootbox-close-button close"
+                                                data-dismiss="modal" aria-hidden="true"
+                                                style="margin-top: -10px;">×</button>
+                                            <div class="bootbox-body">
+                                                <div class="container-fluid text-center">
+                                                    <h4>{{this.title}}</h4>
+                                                    <hr>
+                                                    <ul class="list-group note-container" id="notes">
+                                                        {{!-- <li class="list-group-item">No notes for this article yet.</li> --}}
+                                                    </ul>
+                                                    <textarea id="bodyinput" placeholder="New Note" rows="4"
+                                                        cols="60"></textarea>
+                                                    <button type="button" class="close" data-dismiss="modal" id="save-note"
+                                                        data-id="{{this.id}}">Save Note</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {{!-- </div> --}}
 
                         <button class="delete-saved btn btn-danger" data-id="{{this.id}}">Delete from saved</button>
 
@@ -75,27 +101,7 @@
 
                         {{/each}}
 
-                        {{!-- <div class="modal" id="notes-modal" tabindex="-1" role="dialog">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title">{{this.title}}</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <textarea id='bodyinput' name='body'></textarea>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">Close</button>
-                                        <button class='btn btn-primary' data-id='" + data._id + "' id='save-note'>Save
-                                            Note</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
+
 
                     </div>
                 </div>
@@ -103,6 +109,3 @@
         </div>
     </div>
 </div>
-
-{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
-{{!-- <script src="/public/assets/js/saved.js"></script> --}}
