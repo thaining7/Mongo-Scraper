@@ -27,93 +27,91 @@
         </div>
     </nav>
 
-    <div id="wrapper">
+    <div class="row">
 
-        <div class="row">
+        <div class="col-md-12">
 
-            <div class="col-md-12">
-
-                <div class="jumbotron text-center">
-                    <h1 class="display-4">Mongo Scraper</h1>
-                    <h2><i>Phoronix Edition</i></h2>
-
-                </div>
+            <div class="jumbotron text-center">
+                <h1 class="display-4">Mongo Scraper</h1>
+                <h2><i>Phoronix Edition</i></h2>
 
             </div>
+
         </div>
+    </div>
 
-        <div class="row">
+    <div class="row">
 
-            <div class="col-md-12">
+        <div class="col-md-12">
 
-                <div class="card text-white bg-dark mb-3">
-                    <div class="card-body">
-                        {{#each articles}}
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body">
+                    {{#each articles}}
 
-                        <div id="articles">
+                    <div id="articles">
 
-                            <h5 class="card-title">
+                        <h5 class="card-title">
 
                             <a href="{{this.link}}" target="_blank">{{this.title}}</a>
 
-                            </h5>
+                        </h5>
 
-                        </div>
+                    </div>
 
-                        <div id="summary">
+                    <div id="summary">
 
-                            <p class="card-text">
+                        <p class="card-text">
 
                             {{this.summary}}
 
-                            </p>
-                            
-                        </div>
+                        </p>
 
+                    </div>
 
+                    {{#if saved}}
 
-                        {{#if saved}}
-
-                        
-
-                            <div class="bootbox modal fade show" id="notesModal" tabindex="-1" role="dialog">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-body"><button type="button" class="bootbox-close-button close"
-                                                data-dismiss="modal" aria-hidden="true"
-                                                style="margin-top: -10px;">×</button>
-                                            <div class="bootbox-body">
-                                                <div class="container-fluid text-center">
-                                                    <h4>{{this.title}}</h4>
+                    <div class="bootbox modal fade show" id="notesModal" tabindex="-2" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-body"><button type="button" class="bootbox-close-button close"
+                                        data-dismiss="modal" aria-hidden="true" style="margin-top: -10px;">×</button>
+                                    <div class="bootbox-body">
+                                        <div class="container-fluid text-center">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h4 style="color: black">{{this.title}}</h4>
                                                     <hr>
-                                                    <ul class="list-group note-container" id="notes">
+                                                    <ul class="list-group note-container" id="notes"
+                                                        style="color:black">
                                                         {{!-- <li class="list-group-item">No notes for this article yet.</li> --}}
                                                     </ul>
-                                                    <textarea id="bodyinput" placeholder="New Note" rows="4"
-                                                        cols="60"></textarea>
-                                                    <button type="button btn btn-success" class="close" data-dismiss="modal" id="save-note"
-                                                        data-id="{{this.id}}">Save Note</button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <textarea id="bodyinput" placeholder="New Note"></textarea>
+                                                    <button type="button btn btn-success" class="close"
+                                                        data-dismiss="modal" id="save-note" data-id="{{this.id}}">Save
+                                                        Note</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                        
-
-                        <button class="delete-saved btn btn-danger" data-id="{{this.id}}"><i class="far fa-trash-alt">Delete from saved</i></button>
-
-                        <button class="article-notes btn btn-info" data-toggle="modal" data-target="#notesModal"
-                            data-id="{{this.id}}"><i class="far fa-sticky-note">Article Notes</i></button>
-
-                        {{/if}}
-
-                        {{/each}}
-
-
-
+                        </div>
                     </div>
+
+                    <button class="delete-saved btn btn-danger" data-id="{{this.id}}"><i class="far fa-trash-alt">Delete
+                            from saved</i></button>
+
+                    <button class="article-notes btn btn-info" data-toggle="modal" data-target="#notesModal"
+                        data-id="{{this.id}}"><i class="far fa-sticky-note">Article Notes</i></button>
+
+                    {{/if}}
+
+                    {{/each}}
+
                 </div>
             </div>
         </div>
