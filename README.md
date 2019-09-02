@@ -65,7 +65,7 @@ router.get("/scrape", function (req, res) {
 
 # Screenshots
 
-[Home Page](/public/assets/images/mongoscraper1.png)
+![Home Page](/public/assets/images/mongoscraper1.png)
 
 # How to use
 
