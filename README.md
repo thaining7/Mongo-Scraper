@@ -20,7 +20,7 @@
 
 # Code Example
 
-#### Scrape article API route using Cheerio NPM package:
+#### Scrape article API route using Axios and Cheerio NPM package:
 
 ```
 router.get("/scrape", function (req, res) {
