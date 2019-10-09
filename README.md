@@ -20,7 +20,7 @@
 
 # Code Example
 
-#### Scrape article API route using Cheerio NPM package:
+#### Scrape article API route using Axios and Cheerio NPM packages:
 
 ```
 router.get("/scrape", function (req, res) {
@@ -63,6 +63,13 @@ router.get("/scrape", function (req, res) {
 });
 ```
 
+# Screenshots
+
+![Home Page](/public/assets/images/mongoscraper1.png)
+
 # How to use
 
-#### Click the "scrape articles" button to get the latest articles from Phoronix. Click the "clear articles" button to clear old articles. Click the "save article" button to save an article. Click the "saved articles" link to view saved articles and save notes for each article.
+* Click the "scrape articles" button to get the latest articles from Phoronix.
+* Click the "clear articles" button to clear old articles.
+* Click the "save article" button to save an article.
+* Click the "saved articles" link to view saved articles and save notes for each article.
