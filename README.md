@@ -1,14 +1,14 @@
 # Mongo-Scraper
 ## Phoronix Edition
 
-### Scrape, save and comment on the latest tech news articles from Phoronix
-#### Heroku App: https://mongo-scrapetastic.herokuapp.com/
+Scrape, save and comment on the latest tech news articles from Phoronix
+Heroku App: https://mongo-scrapetastic.herokuapp.com/
 
-# Motivation
+## Description
 
-#### This application demonstrates CRUD database operations using MongoDB as a database
+This application demonstrates CRUD database operations using MongoDB as a database
 
-# Tech Used:
+## Tech Used:
 
 * jQuery
 * Express
@@ -18,9 +18,9 @@
 * Cheerio
 * Axios
 
-# Code Example
+## Code Example
 
-#### Scrape article API route using Axios and Cheerio NPM packages:
+Scrape article API route using Axios and Cheerio NPM packages:
 
 ```
 router.get("/scrape", function (req, res) {
@@ -63,11 +63,11 @@ router.get("/scrape", function (req, res) {
 });
 ```
 
-# Screenshots
+## Screenshots
 
 ![Home Page](/public/assets/images/mongoscraper1.png)
 
-# How to use
+## How To Use
 
 * Click the "scrape articles" button to get the latest articles from Phoronix.
 * Click the "clear articles" button to clear old articles.
